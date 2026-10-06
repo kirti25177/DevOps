@@ -13,18 +13,21 @@ jobs:
         run: echo "Code checkout done"
       
   build:
+      needs: code
       runs-on: ubuntu-latest
       steps:
       - name: Code Build
         run: echo "Code build done"
 
   test:
+      needs: build
       runs-on: ubuntu-latest
       steps:
       - name: Code Test
         run: echo "Code test done"
 
   deploy:
+      needs: test
       runs-on: ubuntu-latest
       steps:
       - name: Code Deploy
